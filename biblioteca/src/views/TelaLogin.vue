@@ -3,13 +3,13 @@
         <div class="login-box">
             <div class="login-box">
                 <p class="login-box-msg">Faça login para usar o site</p>
-                <form action="../../index2.html" method="post">
+                <form action="" method="post">
                     <div class="form-group has-feedback">
                         <input type="user" v-model="user" placeholder="Usuario">
                         <span class="glyphicon"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" v-model="pass" placeholder="Senha">
+                        <input type="password" v-model="pass" v-on:keyup.enter="login()" placeholder="Senha">
                         <span class="glyphicon"></span>
                     </div>
                 </form><br>
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 
 export default{
     data(){

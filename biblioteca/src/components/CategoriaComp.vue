@@ -1,14 +1,22 @@
 <template>
-     <label>Categoria</label>
-              <select name="select">
+  <div class="category-form">
+     <label>Categoria</label> <br>
+              <!-- <select name="select">
                   <option value=""></option>
                   <option v-for="option in categorias" :key="option.text"
                   :value="option.id" >
                   {{ option.text }}
                   </option>
-              </select>
+              </select> -->
               <label>Nova Categoria <input type="text" v-model="newText" placeholder="Digite Aqui"></label>
               <button @click="add()" >Adicionar</button>
+              <ul>
+                  <li v-for="categoria in categorias" :key="categoria.id" >
+                      {{ categoria.id }} - 
+                      {{ categoria.text }}
+                  </li>
+              </ul> 
+  </div>
 </template>
 
 <script>
