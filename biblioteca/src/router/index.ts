@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import TelaAdmin from '../views/TelaAdmin.vue'
 import TelaUser from '../views/TelaUsuario.vue'
 import CadBook from '../views/CadastroLivro.vue'
 import TelaLogin from '../views/TelaLogin.vue'
 import CadUser from '../views/CadastroUsuario.vue'
+import Publi from '../views/CadastroEditora.vue'
+import Category from '../views/CadastroCategoria.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -41,6 +42,18 @@ const routes: Array<RouteRecordRaw> = [
     name: 'cad_user',
 
     component: CadUser
+  },
+  {
+    path: '/publi',
+    name: 'publi',
+
+    component: Publi
+  },
+  {
+    path: '/category',
+    name: 'category',
+
+    component: Category
   }
 ]
 

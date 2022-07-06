@@ -36,7 +36,9 @@ export default{
         login(){
             if(this.user == 'admin' && this.pass == 'admin'){
                 this.$router.push("/admin");
-        }
+            }else{
+                this.$router.push("/screen_user");	
+            }
     }
     }
 }
