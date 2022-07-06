@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import TelaAdmin from '../views/TelaAdmin.vue'
 import TelaUser from '../views/TelaUsuario.vue'
 import CadBook from '../views/CadastroLivro.vue'
+import TelaLogin from '../views/TelaLogin.vue'
+import CadUser from '../views/CadastroUsuario.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -17,8 +19,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/TelaAdmin.vue')
   },
   {
-    path: '/new_user',
-    name: 'new_user',
+    path: '/screen_user',
+    name: 'screen_user',
 
     component: TelaUser
   },
@@ -27,6 +29,18 @@ const routes: Array<RouteRecordRaw> = [
     name: 'book',
 
     component: CadBook
+  },
+  {
+    path: '/login',
+    name: 'login',
+
+    component: TelaLogin
+  },
+  {
+    path: '/cad_user',
+    name: 'cad_user',
+
+    component: CadUser
   }
 ]
 

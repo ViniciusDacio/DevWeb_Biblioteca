@@ -1,10 +1,21 @@
+<script>
+import { RouterLink } from "vue-router";
+export default {
+  data() {
+    return {
+      auth: false,
+    }
+  },
+  mounted() {
+    //verify if the user is authenticated, if not redirect to login
+    if (!this.auth) {
+      this.$router.push("/login");
+    }
+  },
+}
+</script>
+
 <template>
-  <nav id="menu_top">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/admin">Admin</router-link> |
-    <router-link to="/new_user" class="cad_user">Novo Usuario</router-link>
-  </nav>
-  <hr>
   <router-view/>
 </template>
 

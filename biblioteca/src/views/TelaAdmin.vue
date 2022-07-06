@@ -1,5 +1,7 @@
 <template>
 <div id="adm">
+    <navbar />
+        <hr>
     <h1>Pagina Administrador</h1>
     <hr>
     <button>
@@ -8,4 +10,12 @@
 
 </div>
 </template>
+
+<script>
+import Navbar from "../components/NavBar.vue"
+
+export default{
+    components: {Navbar}
+}
+</script>
 

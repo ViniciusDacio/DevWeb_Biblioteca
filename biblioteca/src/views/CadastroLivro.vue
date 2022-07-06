@@ -1,5 +1,7 @@
 <template>
     <div class="cad_book">
+        <navBar />
+        <hr>
         <h1>Cadastro de Livro</h1>
         <div class="cad_book">
             <label>Titulo<input type="text" v-model="titulo"></label><br><br>
@@ -26,8 +28,9 @@
 
   import Editora from '@/components/EditoraComp.vue'
   import Categoria from '@/components/CategoriaComp.vue'
+  import NavBar from '../components/NavBar.vue'
 
   export default{
-    components: {Editora, Categoria},
+    components: {Editora, Categoria, NavBar},
   }
 </script>

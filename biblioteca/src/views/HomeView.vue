@@ -1,5 +1,8 @@
+
 <template>
     <div class="livros_view">
+        <navbar />
+        <hr>
         <h1>Sistema da Biblioteca</h1>
         <hr>
 
@@ -27,8 +30,10 @@ ul li{
 <script>
 
 import CadastroLivro from '../views/CadastroLivro.vue'
+import Navbar from "../components/NavBar.vue"
 
 export default{
+    components: {Navbar},
     data(){
         return{
             livros: [
