@@ -5,9 +5,13 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <nav id="menu_top">
+  <nav id="menu-top">
     <router-link to="/">Home</router-link> |
     <router-link to="/admin">Administração</router-link> |
     <router-link to="/cad_user" class="cad_user">Novo Usuario</router-link>
   </nav>
 </template>
+
+<style>
+  
+</style>
