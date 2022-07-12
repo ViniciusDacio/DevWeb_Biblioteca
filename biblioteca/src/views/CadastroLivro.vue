@@ -1,15 +1,15 @@
 <template>
     <div class="cad_book">
         <navBar />
-      <div class="cad_book flex">
+      <div class="cad_book">
         <h1>Cadastro de Livro</h1>
         <div>
             <label>Titulo<input type="text" v-model="titulo"></label><br>
             <label>ISBN<input type="text"></label><br>
-            <Editora></Editora>
-            <label>Autor<input type="text"></label><br>
-            <Categoria />
-            <br><br>
+            <Editora :editora="editora" :mostrarSelect="true" ></Editora><br>
+            <!-- <label>Autor<input type="text"></label><br> -->
+            <Categoria :categorias="categorias" :mostrarSelect="true"/>
+            <br>
             <label>Quantidade<input type="number"></label><br>
             <label>Preço<input type="number"></label><br>
 
@@ -36,5 +36,23 @@
 
   export default{
     components: {Editora, Categoria, NavBar},
+
+    data() {
+      return {
+        editora: [
+          {id: 1, nome: "Dácio edições", site: "dacio.com"},
+          {id: 2, nome: "Pearson", site: "pearson.com"},
+          {id: 3, nome: "Átila", site: "atila.com"}
+          ],
+
+          categorias: [
+        {id: 1, text:'Lançamentos'}, 
+        {id: 2, text:'Mais Vendidos'}, 
+        {id: 3, text: 'Computação'}
+        ],
+        
+      }
+    }
+  
   }
 </script>
