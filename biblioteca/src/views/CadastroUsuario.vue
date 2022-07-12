@@ -1,5 +1,6 @@
 <template>
     <div class="form_user">
+        <navBar />
         <h1>Cadastro de Usuário</h1>
         <div class="cad_user">
             <label>Nome<input type="text"></label><br>
@@ -9,12 +10,18 @@
         </div>
     </div>
 </template>
+<script>
+import style from '@/assets/style.css';
+import NavBar from '../components/NavBar.vue'
 
+export default{
+    components: {NavBar},
+}
+</script>
 <style scoped>
 .form_user{
     display: flex;
     flex-direction: column;
-    padding: 10px;
 }
 
 .form_user input{

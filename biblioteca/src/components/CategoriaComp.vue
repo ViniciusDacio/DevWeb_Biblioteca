@@ -20,28 +20,37 @@
 </template>
 
 <script>
+
+import style from '@/assets/style.css';
 export default{
+  props: {
+    categorias: {
+      type: String,
+      required: true
+    }
+  },
+  
     data(){
       return{
         newText: '',
 
-        categorias: [
-        {id: 1, text:'Lançamentos'}, 
-        {id: 2, text:'Mais Vendidos'}, 
-        {id: 3, text: 'Computação'}
-        ],
+        // categorias: [
+        // {id: 1, text:'Lançamentos'}, 
+        // {id: 2, text:'Mais Vendidos'}, 
+        // {id: 3, text: 'Computação'}
+        // ],
         nextId: 4
       }
     },
-    methods:{
-        add() {
-            this.categorias.push({
-              id: this.nextId++,
-              text: this.newText,
-            })
-            this.newText = ''
-        }
-    }
+    // methods:{
+    //     add() {
+    //         this.categorias.push({
+    //           id: this.nextId++,
+    //           text: this.newText,
+    //         })
+    //         this.newText = ''
+    //     }
+    // }
   }
 </script>
 

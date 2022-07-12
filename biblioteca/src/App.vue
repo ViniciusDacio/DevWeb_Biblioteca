@@ -1,9 +1,10 @@
 <script>
 import { RouterLink } from "vue-router";
+
 export default {
   data() {
     return {
-      auth: false,
+      auth: true,
     }
   },
   mounted() {
@@ -20,11 +21,7 @@ export default {
 </template>
 
 
-<style>
-#menu_top{
-  display: flex;
-  justify-content: space-around;
-  list-style-type: none;
-}
+<style scoped>
+
 
 </style>
