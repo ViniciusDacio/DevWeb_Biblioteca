@@ -9,8 +9,8 @@
                   </option>
               </select>
               <div v-else>
-                <label>Nova Categoria <input type="text" v-model="newText" placeholder="Digite Aqui"></label>
-                <button @click="adicionarCat" >Adicionar</button>
+                <label>Nova Categoria <input type="text" placeholder="Digite Aqui"></label>
+                <button @click="$emit('addcat')" >Adicionar</button>
                   <ul>
                       <li v-for="categoria in categorias" :key="categoria.id" >
                           {{ categoria.id }} - 
@@ -28,19 +28,24 @@ export default{
   props: {
     categorias: {
       type: String,
-      required: true
+      required: true,
+      //default: 'Categoria'
     },
     mostrarSelect: {
       type: Boolean,
       required: true
     },
-    adicionarCat: {
-      type: Function,
-      required: true
-    }
+
   },
-  
+  emits:
+    ['adicionarCat'],
+    
+  methods: {
+    adicionarCat() {
+      this.$emit('addcat', this.categorias);
+    }
   }
+}
 </script>
 
 <style>

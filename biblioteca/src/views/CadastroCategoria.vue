@@ -2,7 +2,7 @@
     <div class="categoria">
         <navBar />
         <hr>
-        <Categoria :categorias="categorias" :mostrarSelect="false" :adicionarCat="add"/>
+        <Categoria :categorias="categoria" :mostrarSelect="false" @addcat="adicionarCat"/>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default{
       return{
         newText: '',
 
-        categorias: [
+        categoria: [
         {id: 1, text:'Lançamentos'}, 
         {id: 2, text:'Mais Vendidos'}, 
         {id: 3, text: 'Computação'}
@@ -24,9 +24,11 @@ export default{
         nextId: 4
       }
     },
+    emits:
+    ['addcat'],
     methods:{
-        add() {
-            this.categorias.push({
+        adicionarCat() {
+            this.categoria.push({
               id: this.nextId++,
               text: this.newText,
             })
