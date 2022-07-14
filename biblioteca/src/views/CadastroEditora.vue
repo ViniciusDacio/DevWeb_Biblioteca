@@ -2,7 +2,7 @@
     <div class="editora">
         <navBar />
         <hr>
-        <Editora :editora="editora" :mostrarSelect="false" :adicionarEditora="addEditora"/><br>
+        <Editora :editora="editora" :mostrarSelect="false"/><br>
         
     </div>
 </template>

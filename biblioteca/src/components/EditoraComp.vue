@@ -3,15 +3,15 @@
         <label>Editora: <br></label>
         <select name="select" v-if="mostrarSelect">
             <option value="">Selecionar Editora</option>
-                <option v-for="option in editora" :key="option.nome"
+                <option v-for="option in store.editora" :key="option.nome"
                 :value="option.id" >
                 {{ option.nome }}
             </option>
         </select>
        <div v-else>
             <label>Nome Editora: <input type="text" v-model="newName"></label><br>
-            <label>Site: <input type="text" v-model="newSite"></label><br>
-            <button @click.prevent="adicionarEditora" >Adicionar</button> <br><br>
+            <label>Site: <input type="text" v-model="newSite"/></label><br>
+            <button @click="adicionarEditora" >Adicionar</button> <br><br>
             <span>Editoras Cadastradas</span>
                 <ul>
                     <li v-for="edit in store.editora" :key="edit.id" >
@@ -42,15 +42,10 @@ export default {
         type: Boolean,
         required: true
     },
-    // adicionarEditora: {
-    //     type: Function,
-    //     required: true
-    // }
  },
  setup(){
     const store = editoraStore()
-    var newName = ref('')
-    var newSite = ''
+    var newName = ref(''), newSite = ref('')
 
     function adicionarEditora(){
         return store.addEditora(newName.value, newSite.value)
@@ -58,8 +53,16 @@ export default {
     return {
          store,
          adicionarEditora,
+         newName,
+        newSite,
     }
- }
+ },
+//  data(){
+//     return {
+//         newName: '',
+//         newSite: '',
+//     }
+//  },
 //   methods: {
 //         ...mapActions(['addEditora']),
 //     },

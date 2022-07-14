@@ -2,7 +2,7 @@
 <template>
     <div class="screen-user">
         <navbar />
-        <Livros />
+        <Livro :livros="livro" />
     </div>
 </template>
 
@@ -12,11 +12,11 @@
 
 <script>
 
-import Livros from '../components/LivrosComp.vue'
+import Livro from '../components/LivrosComp.vue'
 import Navbar from '../components/NavBar.vue'
 
 export default{
-    components: {Livros, Navbar},
+    components: {Livro, Navbar},
     
 }
 </script>

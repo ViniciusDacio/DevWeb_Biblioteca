@@ -3,7 +3,7 @@
         <navbar />
         <hr>
         <h3>Livros: </h3>
-        <ul v-for="livro in livros" :key="livro">
+        <ul v-for="livro in store.livros" :key="livro">
             <li>
                 {{ livro.titulo }} <br>
                 Autor: {{ livro.autor }} <br>
@@ -15,13 +15,39 @@
 </template>
 
 <script>
+
+import { ref } from '@vue/reactivity'
+import { livroStore } from '../store/livro.js'
+
 export default {
+    props: {
+        livros: {
+        type: String,
+        required: true,
+        }
+    },
+    setup(){
+        const store = livroStore()
+        var titulo = ref(''), autor = ref(''), isbn = ref(''), editora = ref(''), categoria = ref(''), quantidade = ref(''), preco = ref('')
+        function addLivros(){
+            return store.getLivros(titulo.value, autor.value, isbn.value, editora.value, categoria.value, quantidade.value, preco.value)
+        }
+        return {
+            store,
+            addLivros,
+            titulo,
+            autor,
+            isbn,
+            editora,
+            categoria,
+            quantidade,
+            preco,
+        }
+    },
+
     data(){
         return{
-            livros: [
-                {titulo: 'Sherlock Holmes: Um estudo em vermelho', autor: 'Arthur Conan Doyle', editora: 'Person', preco: '29.99'},
-                {titulo: 'Sherlock Holmes: O sinal dos quatro', autor: 'Arthur Conan Doyle', editora: 'Etica', preco: '19.99'},
-            ]
+            
         }
     }
 }

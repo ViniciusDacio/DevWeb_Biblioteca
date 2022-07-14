@@ -3,18 +3,19 @@
     <label>Categoria: </label> <br>
               <select name="select" v-if="mostrarSelect">
                   <option value="">Selecionar Categoria</option>
-                  <option v-for="option in categorias" :key="option.text"
+                  <option v-for="option in store.categorias" :key="option.text"
                   :value="option.id" >
-                  {{ option.text }}
+                  {{ option.nome }}
                   </option>
               </select>
               <div v-else>
-                <label>Nova Categoria <input type="text" placeholder="Digite Aqui"></label>
-                <button @click="$emit('addcat')" >Adicionar</button>
+                <label>Nova Categoria <input type="text" placeholder="Digite Aqui" v-model="novaCat"></label>
+                <button @click="categoria" >Adicionar</button> <br> <br>
+                <span>Categorias Cadastradas</span>
                   <ul>
-                      <li v-for="categoria in categorias" :key="categoria.id" >
-                          {{ categoria.id }} - 
-                          {{ categoria.text }}
+                      <li v-for="i in store.categorias" :key="i.id" >
+                          Id: {{ i.id }} <br>
+                          Nome: {{ i.nome }}
                       </li>
                   </ul> 
               </div>
@@ -23,7 +24,9 @@
 
 <script>
 
-import style from '@/assets/style.css';
+import { ref } from '@vue/reactivity'
+import { categoriaStore } from '../store/categoria.js'
+
 export default{
   props: {
     categorias: {
@@ -37,14 +40,19 @@ export default{
     },
 
   },
-  emits:
-    ['adicionarCat'],
-    
-  methods: {
-    adicionarCat() {
-      this.$emit('addcat', this.categorias);
+  setup(){
+    const store = categoriaStore()
+    var novaCat = ref('')
+
+    function categoria(){
+      return store.addCategoria(novaCat.value)
     }
-  }
+    return {
+      store,
+      categoria,
+      novaCat,
+    }
+  },
 }
 </script>
 
