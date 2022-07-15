@@ -4,7 +4,7 @@ import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
-      auth: true,
+      auth: false,
     }
   },
   mounted() {

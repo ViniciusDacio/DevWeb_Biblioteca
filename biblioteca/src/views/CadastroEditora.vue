@@ -8,10 +8,8 @@
 </template>
 
 <script>
-import { mapActions, mapStores } from 'pinia'
 import Editora from '../components/EditoraComp.vue'
- import NavBar from '../components/NavBar.vue'
- import { editoraStore } from '../store/editora.js'
+import NavBar from '../components/NavBar.vue'
 
 export default{
     components: {Editora, NavBar},

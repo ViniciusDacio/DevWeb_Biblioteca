@@ -1,9 +1,9 @@
 import {defineStore} from 'pinia'
 
-export const livro = defineStore('livroStore', {
+export const livroStore = defineStore('lstore', {
     state: () => ({
-        livros: [
-                {titulo: 'Sherlock Holmes: Um estudo em vermelho', 
+        livros: [{
+                titulo: 'Sherlock Holmes: Um estudo em vermelho', 
                 autor: 'Arthur Conan Doyle', 
                 isbn: '9788571201091',
                 editora: 'Person', 

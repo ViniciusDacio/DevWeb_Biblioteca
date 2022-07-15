@@ -12,8 +12,3 @@ import style from '@/assets/style.css';
     <router-link to="/cad_user" class="cad_user"><span>Adicionar Usuário</span></router-link>
   </nav>
 </template>
-
-<style>
-
-
-</style>

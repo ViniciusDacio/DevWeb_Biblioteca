@@ -1,10 +1,10 @@
 <template>
     <div class="edit">
         <label>Editora: <br></label>
-        <select name="select" v-if="mostrarSelect">
-            <option value="">Selecionar Editora</option>
+        <select name="select" v-if="mostrarSelect" :editoraSelecionada="seleciona">
+            <option value="" disabled selected>Selecionar Editora</option>
                 <option v-for="option in store.editora" :key="option.nome"
-                :value="option.id" >
+                :value="option.id">
                 {{ option.nome }}
             </option>
         </select>
@@ -14,15 +14,13 @@
             <button @click="adicionarEditora" >Adicionar</button> <br><br>
             <span>Editoras Cadastradas</span>
                 <ul>
-                    <li v-for="edit in store.editora" :key="edit.id" >
+                    <li v-for="edit in store.editora" :key="edit.id">
                         ID: {{ edit.id }} <br>
                         Editora: {{ edit.nome }} <br>
                         Site: {{ edit.site }} <br>  <br>
                     </li>
                 </ul> 
        </div>
-        
-    
     </div>
 </template>
 
@@ -30,18 +28,19 @@
 import { ref } from '@vue/reactivity'
 
 import { editoraStore } from '../store/editora.js'
-// import { mapActions, mapStores, mapState } from 'pinia'
 
 export default {
  props: {
     editora: {
-        type: Object,
+        type: String,
         required: true
     },
     mostrarSelect: {
         type: Boolean,
         required: true
     },
+   
+
  },
  setup(){
     const store = editoraStore()
@@ -54,30 +53,14 @@ export default {
          store,
          adicionarEditora,
          newName,
-        newSite,
+         newSite,
     }
  },
-//  data(){
-//     return {
-//         newName: '',
-//         newSite: '',
-//     }
-//  },
-//   methods: {
-//         ...mapActions(['addEditora']),
-//     },
-//     computed: {
-//         ...mapStores({
-//             editoraStore: editoraStore
-//         }),
-//     },
-//     setup(){
-//         const store = editoraStore();
-//         const listaEditoras = store.listaEditoras;
-//         return{
-//             listaEditoras
-//         }
-//     }
+ data(){
+    return {
+        seleciona: 'editoraSelecionada',
+        }
+ },
 }
 </script>
 

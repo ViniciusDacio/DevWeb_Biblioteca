@@ -1,16 +1,25 @@
 <template>
     <div class="livros_view">
-        <navbar />
-        <hr>
         <h3>Livros: </h3>
-        <ul v-for="livro in store.livros" :key="livro">
-            <li>
-                {{ livro.titulo }} <br>
-                Autor: {{ livro.autor }} <br>
-                Editora: {{ livro.editora }} <br>
-                Preço: R${{ livro.preco }} <br>
+        <ul >
+            <li v-for="j in lstore.livros" :key="j.isbn" >
+                Titulo: {{ j.titulo }} <br>
+                Autor: {{ j.autor }} <br>
+                Editora: {{ j.editora }} <br>
+                Categoria: {{ j.categoria }} <br>
+                Quantidade: {{ j.quantidade }} <br>
+                Preço: R${{ j.preco }} <br>
+                <button @click="addlivro">Adicionar no Carrinho</button>
+             <hr>
             </li>
-</ul>
+        </ul>
+
+        <ul>
+            <li v-for="i in cstore.itens" :key="i.Quantidade">
+                Livro: {{ i.Nomeitem }} <br>
+                Quantidade: {{ i.Quantidade }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -18,41 +27,32 @@
 
 import { ref } from '@vue/reactivity'
 import { livroStore } from '../store/livro.js'
+import { carrinhoStore 
+} from '../store/carrinho.js'
 
 export default {
     props: {
         livros: {
-        type: String,
+        type: Object,
         required: true,
-        }
+        },
     },
     setup(){
-        const store = livroStore()
-        var titulo = ref(''), autor = ref(''), isbn = ref(''), editora = ref(''), categoria = ref(''), quantidade = ref(''), preco = ref('')
-        function addLivros(){
-            return store.getLivros(titulo.value, autor.value, isbn.value, editora.value, categoria.value, quantidade.value, preco.value)
+        const lstore = livroStore()
+        const cstore = carrinhoStore()
+        var livro = ref('')
+
+        function addlivro(){
+            return cstore.addItem(livro.value, 1)
         }
         return {
-            store,
-            addLivros,
-            titulo,
-            autor,
-            isbn,
-            editora,
-            categoria,
-            quantidade,
-            preco,
-        }
-    },
-
-    data(){
-        return{
-            
+            lstore,
+            cstore,
+            addlivro,
+            carrinhoStore,
         }
     }
-}
+
+        
+    }
 </script>
-
-<style>
-
-</style>

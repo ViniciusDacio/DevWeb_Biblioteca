@@ -2,7 +2,7 @@
   <div class="category-form">
     <label>Categoria: </label> <br>
               <select name="select" v-if="mostrarSelect">
-                  <option value="">Selecionar Categoria</option>
+                  <option value=""  disabled selected>Selecionar Categoria</option>
                   <option v-for="option in store.categorias" :key="option.text"
                   :value="option.id" >
                   {{ option.nome }}

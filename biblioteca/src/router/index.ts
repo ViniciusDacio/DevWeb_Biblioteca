@@ -6,6 +6,7 @@ import TelaLogin from '../views/TelaLogin.vue'
 import CadUser from '../views/CadastroUsuario.vue'
 import Publi from '../views/CadastroEditora.vue'
 import Category from '../views/CadastroCategoria.vue'
+import Carrinho from '../views/CarrinhoView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -54,6 +55,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'category',
 
     component: Category
+  },
+  {
+    path: '/carrinho',
+    name: 'carrinho',
+
+    component: Carrinho
   }
 ]
 

@@ -1,4 +1,5 @@
 <template>
+    <Menu />
     <div class="screen-user">
         <h1>Tela Usuario</h1>
         <Livros />
@@ -7,9 +8,15 @@
 
 <script>
 import Livros from '../components/LivrosComp.vue'
+import Menu from '../components/MenuUsuario.vue'
 
 export default{
-    components: {Livros},
-    
+    components: {Livros, Menu},
+
+    data(){
+        return {
+            // unidade: 0,
+        }
+    },
 }
 </script>
