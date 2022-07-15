@@ -8,8 +8,18 @@ export const livroStore = defineStore('lstore', {
                 isbn: '9788571201091',
                 editora: 'Person', 
                 categoria: 'Ficção',
-                quantidade: '1',
-                preco: '29.99'},
+                estoque: '1',
+                preco: 29.99
+                },
+                {
+                titulo: 'Engenharia de Software', 
+                autor: 'Paulo Silveira', 
+                isbn: '9788571201091',
+                editora: 'Person', 
+                categoria: 'Computação',
+                estoque: '1',
+                preco: 99.99
+                },
             ],
         
     }),

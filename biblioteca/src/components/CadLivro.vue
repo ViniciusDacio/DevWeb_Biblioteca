@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="livros">
-            <LivrosCad />
+            <ExibirLivros />
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@ import { ref } from '@vue/reactivity'
 import { livroStore } from '../store/livro.js'
 import Editora from '@/components/EditoraComp.vue'
 import Categoria from '@/components/CategoriaComp.vue'
-import LivrosCad from '../components/LivrosComp.vue'
+import ExibirLivros from '@/components/ExibirLivro.vue'
 
 export default {
     props: {
@@ -44,7 +44,7 @@ export default {
     components: {
         Editora,
         Categoria,
-        LivrosCad,
+        ExibirLivros
     },
     setup(){
         const lstore = livroStore()
