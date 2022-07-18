@@ -3,28 +3,34 @@
     <div class="cad">
         <div class="cad_livro">
             <div>
-                <label>Titulo<input type="text" v-model="titulo"></label><br>
-                <label>Autor<input type="text" v-model="autor"></label><br>
-                <label>ISBN<input type="number" v-model="isbn"></label><br>
+                <label>Titulo<input type="text" v-model="livro.titulo"></label><br>
+                <label>Autor<input type="text" v-model="livro.autor"></label><br>
+                <label>ISBN<input type="number" v-model="livro.isbn"></label><br>
                 <label>Editora: </label> <br>
-                    <select name="select" v-model="editoraSelecionada">
+                    <select name="select" v-model="livro.editora">
                         <option value="" disabled selected>Selecionar Editora</option>
-                        <option v-for="option in store.editora" :key="option.id"
+                        <option v-for="option in store.editoras" :key="option.id"
                             :value="option.nome">
                             {{ option.nome }}
                         </option>
                     </select> <br>
                 <br>
-                <Categoria :categorias="categorias" :mostrarSelect="true" v-model="categoria"/>
+                <label>Categoria</label> <br>
+                    <select name="select" v-model="livro.categoria">
+                        <option value=""  disabled selected>Selecionar Categoria</option>
+                        <option v-for="option in catstore.categorias" :key="option.text"
+                            :value="option.nome" >
+                            {{ option.nome }}
+                    </option>
+                </select> <br>
                 <br>
-                <label>Quantidade<input type="number" v-model="quantidade"></label><br>
-                <label>Preço<input type="number" v-model="preco"></label><br>
-
-                <button @click="addLivros()">Cadastrar</button>
+                <label>Quantidade<input type="number" v-model="livro.quantidade"></label><br>
+                <label>Preço<input type="number" v-model="livro.preco"></label><br>
+                <button @click="addLivros">Cadastrar</button>
             </div>
         </div>
         <div class="livros">
-            <ExibirLivros />
+            <ExibirLivros :opcoesCarrinho="false"/>
         </div>
     </div>
 </template>
@@ -34,10 +40,8 @@
 import { ref } from '@vue/reactivity'
 import { livroStore } from '../store/livro.js'
 import { editoraStore } from '../store/editora.js'
-
-// import Editora from '@/components/EditoraComp.vue'
-import Categoria from '@/components/CategoriaComp.vue'
 import ExibirLivros from '@/components/ExibirLivro.vue'
+import { categoriaStore } from '@/store/categoria.js'
 
 export default {
     props: {
@@ -47,33 +51,50 @@ export default {
         },
     },
     components: {
-        
-        Categoria,
         ExibirLivros
     },
     setup(){
         const store = editoraStore()
+        const catstore = categoriaStore()
         const lstore = livroStore()
-        var titulo = ref(''), autor = ref(''), isbn = ref(''), editoraSelecionada = ref(''), categoria = ref(''), quantidade = ref(''), preco = ref('')
+
+        var livro = ref({
+            id: "",
+            titulo: "",
+            autor: "",
+            isbn: "",
+            editora: "",
+            categoria: "",
+            quantidade: "",
+            preco: "",
+        });
         function addLivros(){
-            return lstore.addLivro(titulo.value, autor.value, isbn.value, editoraSelecionada.value, categoria.value, quantidade.value, preco.value)
+            lstore.addLivro(livro.value)
+            livro.value = {
+                id: "",
+                titulo: "",
+                autor: "",
+                isbn: "",
+                editora: "",
+                categoria: "",
+                quantidade: "",
+                preco: "",
+            }
         }
+        
         return {
             store,
             lstore,
-            addLivros,
-            titulo,
-            autor,
-            isbn,
-            editoraSelecionada,
-            categoria,
-            quantidade,
-            preco,
+            addLivros, 
+            livro,
+            catstore,
         }
     },
-
-    
-}
+    async mounted(){
+    await this.store.getEditoras();
+    await this.catstore.getCategorias();
+    },
+  }
 </script>
 
 <style scoped>

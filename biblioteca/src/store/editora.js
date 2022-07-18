@@ -1,32 +1,28 @@
 import {defineStore} from 'pinia'
+import axios from 'axios'
 
 export const editoraStore = defineStore('store', {
     state: () => ({
-            newName: '',
-            newSite: '',
-            editora: [
-                {id: 1, nome: "Dácio edições", site: "dacio.com"},
-                {id: 2, nome: "Pearson", site: "pearson.com"},
-                {id: 3, nome: "Átila", site: "atila.com"}
-                ],
-                nextId: 4
+            editoras: [],
         
     }),
-    getters: {
-        getEditora(state) { 
-            return state.editora
-            }
-        },
     actions: {
-        addEditora(newName, newSite) {
-            this.editora.push({
-              id: this.nextId++,
-              nome: newName,
-              site: newSite,
-            })
-            this.newName = ''
-            this.newSite = ''
+        async getEditoras() {
+            const { data } = await axios.get('http://localhost:3000/editoras');
+            this.editoras = data
+            return Promise.resolve()
+        },
+        async addEditora(novaEditora) {
+            const { data } = await axios.post('http://localhost:3000/editoras', novaEditora);
+            this.editoras.push(data);
+            return Promise.resolve()
+        },
+        async deletarEditora(id) {
+            await axios.delete(`http://localhost:3000/editoras/${id}`);
+            const index = this.editoras.findIndex(editora => editora.id === id);
+            this.editoras.splice(index, 1);
+            return Promise.resolve()
         }
     },
     
-})  
+}) 

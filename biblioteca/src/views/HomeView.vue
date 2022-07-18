@@ -2,7 +2,7 @@
 <template>
     <div class="screen-user">
         <navbar />
-        <Livro :livros="Livro" />
+        <Livro :opcoesCarrinho="false" />
     </div>
 </template>
 
@@ -21,7 +21,7 @@ export default{
         return{
             
         }
-    }
+    },
     
 }
 </script>

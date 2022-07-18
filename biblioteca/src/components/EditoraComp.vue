@@ -3,15 +3,16 @@
         <label>Editora: <br></label>
        
        <div v-if="mostrarSelect">
-            <label>Nome Editora: <input type="text" v-model="newName"></label><br>
-            <label>Site: <input type="text" v-model="newSite"/></label><br>
+            <label>Nome Editora: <input type="text" v-model="novaEditora.nome"></label><br>
+            <label>Site: <input type="text" v-model="novaEditora.site"/></label><br>
             <button @click="adicionarEditora" >Adicionar</button> <br><br>
             <span>Editoras Cadastradas</span>
                 <ul>
-                    <li v-for="edit in store.editora" :key="edit.id">
+                    <li v-for="edit in store.editoras" :key="edit.id">
                         ID: {{ edit.id }} <br>
                         Editora: {{ edit.nome }} <br>
-                        Site: {{ edit.site }} <br>  <br>
+                        Site: {{ edit.site }}
+                        <button @click="deletarEditora(edit.id)">Deletar</button>
                     </li>
                 </ul> 
        </div>
@@ -20,7 +21,6 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-
 import { editoraStore } from '../store/editora.js'
 
 export default {
@@ -38,18 +38,28 @@ export default {
  },
  setup(){
     const store = editoraStore()
-    var newName = ref(''), newSite = ref('')
-
+    var editoraId = ref('')
+    var novaEditora = ref({
+      id: "",
+      nome: "",
+      site: "",
+    });
     function adicionarEditora(){
-        return store.addEditora(newName.value, newSite.value)
+        return store.addEditora(novaEditora.value)
+    }
+    function deletarEditora(editoraId){
+        return store.deletarEditora(editoraId)
     }
     return {
-         store,
-         adicionarEditora,
-         newName,
-         newSite,
+        store,
+        adicionarEditora,
+        novaEditora,
+        deletarEditora,
     }
  },
+ async mounted(){
+    await this.store.getEditoras()
+  },
 }
 </script>
 

@@ -8,20 +8,10 @@
                 Editora: {{ j.editora }} <br>
                 Categoria: {{ j.categoria }} <br>
                 Quantidade: {{ j.estoque }} <br>
-                Preço: R${{ j.preco }} <br>
-                <button @click="addlivro(j.titulo, j.autor, j.preco)">Adicionar no Carrinho</button>
-                <button @click="remlivro(j.titulo)">Remover do Carrinho</button>
-             <hr>
-            </li>
-        </ul>
+                Preço: R${{ j.preco }} <br> 
+                <button @click="delLivro(j.id)">Deletar Livro</button> <br>
 
-        <ul>
-            <li v-for="i in cstore.itens" :key="i.titulo">
-                Livro: {{ i.livro }} <br>
-                Autor: {{ i.autor }} <br>
-                Quantidade: {{ i.quantidade }} <br>
-                Preço Unitário: R$ {{ i.preco }} <br>
-                Total: R$ {{ i.total }} <br>
+             <hr>
             </li>
         </ul>
     </div>
@@ -34,39 +24,25 @@ import { livroStore } from '../store/livro.js'
 import { carrinhoStore } from '../store/carrinho.js'
 
 export default {
-    props: {
-        livros: {
-        type: Object,
-        required: true,
-        },
-    },
     setup(){
         const lstore = livroStore()
         const cstore = carrinhoStore()
-        var livro = ref('')
-        var produto = ref('')
+        var idLivro = ref('')
 
-        function addlivro(titulo, autor, preco){
-            produto = {
-                livro: titulo,
-                autor: autor,
-                preco: preco,
-                total: preco,
-                quantidade: 1
-            }
-            return cstore.addItem(produto)
+        function delLivro(idLivro){
+            lstore.deletarLivro(idLivro)
         }
-        function remlivro(titulo){
-            return cstore.removeItem(titulo)
-        }
+
         return {
             lstore,
             cstore,
-            addlivro,
-            remlivro,
             carrinhoStore,
+            delLivro
         }
-    }
+    },
+    async mounted(){
+        await this.lstore.getLivros()
+    },
 
         
     }

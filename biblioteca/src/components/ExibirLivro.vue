@@ -4,12 +4,27 @@
         <ul >
             <li v-for="j in lstore.livros" :key="j.isbn" >
                 Titulo: {{ j.titulo }} <br>
+                ID: {{ j.id }} <br>
                 Autor: {{ j.autor }} <br>
                 Editora: {{ j.editora }} <br>
                 Categoria: {{ j.categoria }} <br>
                 Quantidade: {{ j.quantidade }} <br>
                 Preço: R${{ j.preco }} <br>
+                <div v-if="opcoesCarrinho">
+                    <button @click="addlivro(j)">Adicionar no Carrinho</button>
+                    <button @click="remlivro(j)">Remover do Carrinho</button>
+                </div>
              <hr>
+            </li>
+        </ul>
+
+        <ul v-if="opcoesCarrinho">
+            <li v-for="i in cstore.itens" :key="i.titulo">
+                Livro: {{ i.titulo }} <br>
+                Autor: {{ i.autor }} <br>
+                Quantidade: {{ i.quantidade }} <br>
+                Preço Unitário: R$ {{ i.preco }} <br>
+                Total: R$ {{ i.total }} <br>
             </li>
         </ul>
     </div>
@@ -23,18 +38,47 @@ import { carrinhoStore } from '../store/carrinho.js'
 
 export default {
     props: {
-        livros: {
-        type: Object,
-        required: true,
+        opcoesCarrinho: {
+            type: Boolean,
+            required: true,
+            defult: false,
         },
     },
     setup(){
         const lstore = livroStore()
-    
+        const cstore = carrinhoStore()
+        var livro = ref('')
+        var produto = ref('')
+
+        function addlivro(livro){
+            // produto = {
+            //     livro: titulo,
+            //     autor: autor,
+            //     preco: preco,
+            //     total: preco,
+            //     id: id,
+            //     estoque: quantidade,
+            //     quantidade: 1
+            // }
+            produto = livro
+            
+            return cstore.addItem(produto)
+        }
+        function remlivro(livro){
+            return cstore.removeItem(livro)
+        }
         return {
             lstore,
+            cstore,
+            addlivro,
+            remlivro,
+            carrinhoStore,
         }
-    }
+    },
+    async mounted(){
+        await this.lstore.getLivros()
+        await this.cstore.getItens()
+    },
 
         
     }

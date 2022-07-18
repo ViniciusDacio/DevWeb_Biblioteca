@@ -1,34 +1,63 @@
 {
   "livros": [
     {
-      "titulo": "Engenharia de Software",
-      "id": 1,
-      "editora": "Pearson",
-      "idioma": "Português",
-      "autorId": 1,
-      "descrição": "Publicado pela primeira vez há mais de 30 anos, Engenharia de software chega a sua décima edição extensivamente atualizado para refletir os avanços tecnológicos recentes — entre eles, o uso crescente de métodos de desenvolvimento ágil na engenharia de software —, com destaque para o novo material sobre a metodologia Scrum.",
-      "preco": "R$ 50,00",
-      "isbm": "978-85-7522-874-2"
-    },
-    {
       "titulo": "Informática - Conceitos Básicos",
       "id": 2,
       "editora": "GEN LTC",
       "idioma": "Português",
-      "autorId": 2,
       "descrição": "Cobrindo desde hardware até linguagens de programação, passando por redes de computadores, funcionamento da memória, sistemas operacionais, lógica de programação, tecnologia da informação e Internet, este livro é referência básica para estudantes que precisam conhecer melhor as bases dos atuais sistemas computacionais.",
       "preco": "R$ 130,00",
-      "isbm": "8535288139"
+      "isbm": "8535288139",
+      "categoria": "Tecnologia",
+      "autor": "Paulo Silveira",
+      "quantidade": 2
+    },
+    {
+      "titulo": "Engenharia de Software",
+      "id": 1,
+      "editora": "Pearson",
+      "idioma": "Português",
+      "descrição": "Publicado pela primeira vez há mais de 30 anos, Engenharia de software chega a sua décima edição extensivamente atualizado para refletir os avanços tecnológicos recentes — entre eles, o uso crescente de métodos de desenvolvimento ágil na engenharia de software —, com destaque para o novo material sobre a metodologia Scrum.",
+      "preco": "R$ 50,00",
+      "isbm": "9788575228742",
+      "categoria": "Tecnologia",
+      "autor": "Martin Fowler",
+      "quantidade": 1,
+      "estoque": 4
     },
     {
       "titulo": "Introdução à Programação com Python",
       "id": 3,
       "editora": "Novatec Editora",
       "idioma": "Português",
-      "autorId": 3,
       "descrição": "Este livro é orientado ao iniciante em programação.",
       "preco": "R$ 56,00",
-      "isbm": "978-8575227183"
+      "isbm": "9788575227183",
+      "categoria": "Tecnologia",
+      "autor": "Jose Maria",
+      "quantidade": 1
+    },
+    {
+      "id": 5,
+      "titulo": "sdb",
+      "autor": "adgf",
+      "isbn": 546,
+      "editora": "GEN LTC",
+      "categoria": "Lançamentos",
+      "quantidade": 44,
+      "preco": 454
+    }
+  ],
+  "carrinho": [
+    {
+      "id": 5,
+      "titulo": "sdb",
+      "autor": "adgf",
+      "isbn": 546,
+      "editora": "GEN LTC",
+      "categoria": "Lançamentos",
+      "quantidade": 44,
+      "preco": 454
     }
   ],
   "statusCompra": [
@@ -70,6 +99,14 @@
     {
       "id": 2,
       "nome": "Mais Vendidos"
+    },
+    {
+      "id": 3,
+      "nome": "Sci Fi"
+    },
+    {
+      "id": 4,
+      "nome": "sdvc"
     }
   ],
   "autores": [

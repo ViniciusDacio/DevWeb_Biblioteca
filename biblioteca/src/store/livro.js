@@ -1,44 +1,27 @@
 import {defineStore} from 'pinia'
+import axios from 'axios'
 
 export const livroStore = defineStore('lstore', {
     state: () => ({
-        livros: [{
-                titulo: 'Sherlock Holmes: Um estudo em vermelho', 
-                autor: 'Arthur Conan Doyle', 
-                isbn: '9788571201091',
-                editora: 'Person', 
-                categoria: 'Ficção',
-                estoque: '1',
-                preco: 29.99
-                },
-                {
-                titulo: 'Engenharia de Software', 
-                autor: 'Paulo Silveira', 
-                isbn: '9788571201091',
-                editora: 'Person', 
-                categoria: 'Computação',
-                estoque: '1',
-                preco: 99.99
-                },
-            ],
+        livros: [],
         
     }),
-    getters: {
-        getlivro(state) { 
-            return state.livros
-            }
-        },
     actions: {
-        addLivro(titulo, autor, isbn, editora, categoria, quantidade, preco) {
-            this.livros.push({
-                isbn: isbn,
-                titulo: titulo,
-                autor: autor,
-                editora: editora,
-                categoria: categoria,
-                quantidade: quantidade,
-                preco: preco,
-            })
+        async getLivros() {
+            const { data } = await axios.get('http://localhost:3000/livros');
+            this.livros = data
+            return Promise.resolve()
+        },
+        async addLivro(novoLivro) {
+            const { data } = await axios.post('http://localhost:3000/livros', novoLivro);
+            this.livros.push(data);
+            return Promise.resolve()
+        },
+        async deletarLivro(id) {
+            await axios.delete(`http://localhost:3000/livros/${id}`);
+            const index = this.livros.findIndex(livro => livro.id === id);
+            this.livros.splice(index, 1);
+            return Promise.resolve()
         }
     },
     
