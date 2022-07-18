@@ -6,7 +6,14 @@
                 <label>Titulo<input type="text" v-model="titulo"></label><br>
                 <label>Autor<input type="text" v-model="autor"></label><br>
                 <label>ISBN<input type="number" v-model="isbn"></label><br>
-                <Editora :editora="edit" :mostrarSelect="true"></Editora>
+                <label>Editora: </label> <br>
+                    <select name="select" v-model="editoraSelecionada">
+                        <option value="" disabled selected>Selecionar Editora</option>
+                        <option v-for="option in store.editora" :key="option.id"
+                            :value="option.nome">
+                            {{ option.nome }}
+                        </option>
+                    </select> <br>
                 <br>
                 <Categoria :categorias="categorias" :mostrarSelect="true" v-model="categoria"/>
                 <br>
@@ -26,7 +33,9 @@
 
 import { ref } from '@vue/reactivity'
 import { livroStore } from '../store/livro.js'
-import Editora from '@/components/EditoraComp.vue'
+import { editoraStore } from '../store/editora.js'
+
+// import Editora from '@/components/EditoraComp.vue'
 import Categoria from '@/components/CategoriaComp.vue'
 import ExibirLivros from '@/components/ExibirLivro.vue'
 
@@ -36,40 +45,34 @@ export default {
         type: Object,
         required: true,
         },
-         editoraSelecionada: {
-        type: String,
-        required: true
-    },
     },
     components: {
-        Editora,
+        
         Categoria,
         ExibirLivros
     },
     setup(){
+        const store = editoraStore()
         const lstore = livroStore()
-        var titulo = ref(''), autor = ref(''), isbn = ref(''), editora = ref(''), categoria = ref(''), quantidade = ref(''), preco = ref('')
+        var titulo = ref(''), autor = ref(''), isbn = ref(''), editoraSelecionada = ref(''), categoria = ref(''), quantidade = ref(''), preco = ref('')
         function addLivros(){
-            return lstore.addLivro(titulo.value, autor.value, isbn.value, editora.value, categoria.value, quantidade.value, preco.value)
+            return lstore.addLivro(titulo.value, autor.value, isbn.value, editoraSelecionada.value, categoria.value, quantidade.value, preco.value)
         }
         return {
+            store,
             lstore,
             addLivros,
             titulo,
             autor,
             isbn,
-            editora,
+            editoraSelecionada,
             categoria,
             quantidade,
             preco,
         }
     },
 
-    data(){
-        return{
-            
-        }
-    }
+    
 }
 </script>
 

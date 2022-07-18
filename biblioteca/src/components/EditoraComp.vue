@@ -1,14 +1,8 @@
 <template>
     <div class="edit">
         <label>Editora: <br></label>
-        <select name="select" v-if="mostrarSelect" :editoraSelecionada="seleciona">
-            <option value="" disabled selected>Selecionar Editora</option>
-                <option v-for="option in store.editora" :key="option.nome"
-                :value="option.id">
-                {{ option.nome }}
-            </option>
-        </select>
-       <div v-else>
+       
+       <div v-if="mostrarSelect">
             <label>Nome Editora: <input type="text" v-model="newName"></label><br>
             <label>Site: <input type="text" v-model="newSite"/></label><br>
             <button @click="adicionarEditora" >Adicionar</button> <br><br>
@@ -55,11 +49,6 @@ export default {
          newName,
          newSite,
     }
- },
- data(){
-    return {
-        seleciona: 'editoraSelecionada',
-        }
  },
 }
 </script>
