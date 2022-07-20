@@ -1,68 +1,67 @@
 {
   "livros": [
     {
-      "titulo": "Informática - Conceitos Básicos",
-      "id": 2,
-      "editora": "GEN LTC",
-      "idioma": "Português",
-      "descrição": "Cobrindo desde hardware até linguagens de programação, passando por redes de computadores, funcionamento da memória, sistemas operacionais, lógica de programação, tecnologia da informação e Internet, este livro é referência básica para estudantes que precisam conhecer melhor as bases dos atuais sistemas computacionais.",
-      "preco": "R$ 130,00",
-      "isbm": "8535288139",
-      "categoria": "Tecnologia",
-      "autor": "Paulo Silveira",
-      "quantidade": 2
-    },
-    {
-      "titulo": "Engenharia de Software",
       "id": 1,
+      "titulo": "Livro 1",
+      "autor": "Autor 1",
+      "isbn": 1,
       "editora": "Pearson",
-      "idioma": "Português",
-      "descrição": "Publicado pela primeira vez há mais de 30 anos, Engenharia de software chega a sua décima edição extensivamente atualizado para refletir os avanços tecnológicos recentes — entre eles, o uso crescente de métodos de desenvolvimento ágil na engenharia de software —, com destaque para o novo material sobre a metodologia Scrum.",
-      "preco": "R$ 50,00",
-      "isbm": "9788575228742",
-      "categoria": "Tecnologia",
-      "autor": "Martin Fowler",
-      "quantidade": 1
+      "categoria": "Lançamentos",
+      "quantidade": 1,
+      "preco": 10
     },
     {
-      "titulo": "Introdução à Programação com Python",
-      "autor": "Jose Maria",
-      "preco": "R$ 56,00",
-      "total": "R$ 56,00",
-      "id": 3,
-      "quantidade": 5
-    },
-    {
-      "id": 4,
-      "titulo": "livro teste",
-      "autor": "Algum",
-      "isbn": 42789,
+      "id": 2,
+      "titulo": "Livro 2",
+      "autor": "Autor 2",
+      "isbn": 2,
       "editora": "GEN LTC",
       "categoria": "Mais Vendidos",
-      "quantidade": 2,
-      "preco": 10.2
-    }
-  ],
-  "carrinho": [
-    {
-      "titulo": "Introdução à Programação com Python",
-      "autor": "Jose Maria",
-      "preco": "R$ 56,00",
-      "total": "R$ 56,00",
-      "id": 3,
-      "estoque": 4,
-      "quantidade": 7
+      "quantidade": 5,
+      "preco": 30
     },
     {
-      "titulo": "livro teste",
-      "autor": "Algum",
-      "preco": 10.2,
-      "total": 10.2,
+      "id": 3,
+      "titulo": "Titulo 3",
+      "autor": "Autor 3",
+      "isbn": 3,
+      "editora": "Novatec Editora",
+      "categoria": "Sci Fi",
+      "quantidade": 7,
+      "preco": 45
+    },
+    {
       "id": 4,
-      "estoque": 5,
-      "quantidade": 1
+      "titulo": "Livro 4",
+      "autor": "Autor 4",
+      "isbn": 10,
+      "editora": "Pearson",
+      "categoria": "Mais Vendidos",
+      "quantidade": 15,
+      "preco": 8.5
+    },
+    {
+      "id": 5,
+      "titulo": "Titulo 5",
+      "autor": "Autor 5",
+      "isbn": 55,
+      "editora": "GEN LTC",
+      "categoria": "Mais Vendidos",
+      "quantidade": 67,
+      "preco": 80
+    },
+    {
+      "id": 6,
+      "titulo": "Titulo 6",
+      "autor": "Autor 6",
+      "isbn": 6612,
+      "editora": "Pearson",
+      "categoria": "Lançamentos",
+      "quantidade": 16,
+      "preco": 66
     }
   ],
+  "carrinho": [],
   "statusCompra": [
     {
       "id": 1,
