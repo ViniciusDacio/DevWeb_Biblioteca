@@ -51,16 +51,15 @@ export default {
         var produto = ref('')
 
         function addlivro(livro){
-            // produto = {
-            //     livro: titulo,
-            //     autor: autor,
-            //     preco: preco,
-            //     total: preco,
-            //     id: id,
-            //     estoque: quantidade,
-            //     quantidade: 1
-            // }
-            produto = livro
+            produto = {
+                titulo: livro.titulo,
+                autor: livro.autor,
+                preco: livro.preco,
+                total: livro.preco,
+                id: livro.id,
+                estoque: livro.quantidade,
+                quantidade: 1
+            }
             
             return cstore.addItem(produto)
         }

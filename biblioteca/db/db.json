@@ -22,42 +22,45 @@
       "isbm": "9788575228742",
       "categoria": "Tecnologia",
       "autor": "Martin Fowler",
-      "quantidade": 1,
-      "estoque": 4
-    },
-    {
-      "titulo": "Introdução à Programação com Python",
-      "id": 3,
-      "editora": "Novatec Editora",
-      "idioma": "Português",
-      "descrição": "Este livro é orientado ao iniciante em programação.",
-      "preco": "R$ 56,00",
-      "isbm": "9788575227183",
-      "categoria": "Tecnologia",
-      "autor": "Jose Maria",
       "quantidade": 1
     },
     {
-      "id": 5,
-      "titulo": "sdb",
-      "autor": "adgf",
-      "isbn": 546,
+      "titulo": "Introdução à Programação com Python",
+      "autor": "Jose Maria",
+      "preco": "R$ 56,00",
+      "total": "R$ 56,00",
+      "id": 3,
+      "quantidade": 5
+    },
+    {
+      "id": 4,
+      "titulo": "livro teste",
+      "autor": "Algum",
+      "isbn": 42789,
       "editora": "GEN LTC",
-      "categoria": "Lançamentos",
-      "quantidade": 44,
-      "preco": 454
+      "categoria": "Mais Vendidos",
+      "quantidade": 2,
+      "preco": 10.2
     }
   ],
   "carrinho": [
     {
-      "id": 5,
-      "titulo": "sdb",
-      "autor": "adgf",
-      "isbn": 546,
-      "editora": "GEN LTC",
-      "categoria": "Lançamentos",
-      "quantidade": 44,
-      "preco": 454
+      "titulo": "Introdução à Programação com Python",
+      "autor": "Jose Maria",
+      "preco": "R$ 56,00",
+      "total": "R$ 56,00",
+      "id": 3,
+      "estoque": 4,
+      "quantidade": 7
+    },
+    {
+      "titulo": "livro teste",
+      "autor": "Algum",
+      "preco": 10.2,
+      "total": 10.2,
+      "id": 4,
+      "estoque": 5,
+      "quantidade": 1
     }
   ],
   "statusCompra": [

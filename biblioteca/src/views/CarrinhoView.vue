@@ -13,7 +13,7 @@
                 Preço Unitário: R$ {{ i.preco }} <br>
                 Valor Total: R$ {{ i.total }} <br>
                 Quantidade: {{ i.quantidade }} <br>
-                <button @click="comprar(i)">Comprar</button>
+                <button @click="comprar()">Comprar</button>
             </li>
         </ul>
     
@@ -34,8 +34,8 @@ export default {
     function remtudo(){
         cstore.removeTudo();
     }
-    function comprar(livro){
-        return cstore.comprar(livro);
+    function comprar(){
+        return cstore.comprar();
     }
 
         return {
