@@ -5,12 +5,26 @@ export const carrinhoStore = defineStore('carrinho', {
     state: () => ({
         total: 0,
 
+        qtdCarrinho: 0,
+
         itens: [],
         
     }),
     actions: {
         getValor() {
             return this.total
+        },
+
+        getQtdCarrinho() {
+            return this.qtdCarrinho
+
+        },
+        
+        noCarrinho(produto) {
+            const produtoExiste = this.itens.find(item => item.id === produto.id)
+            if(produtoExiste) {
+               return true
+            }
         },
         async getItens() {
             const { data } = await axios.get('http://localhost:3000/carrinho');
@@ -23,12 +37,15 @@ export const carrinhoStore = defineStore('carrinho', {
             if(produtoExiste && produtoExiste.quantidade < produto.estoque) {
                     produtoExiste.quantidade++
                     const{data} = await axios.put(`http://localhost:3000/carrinho/${produto.id}`, produtoExiste)
+                    this.qtdCarrinho++
                 return Promise.resolve()
             }
-            produto.quantidade = 1
-            const{data} = await axios.post(`http://localhost:3000/carrinho/`,produto)
-            this.itens.push(data)
-            this.total += data.preco
+            else if(produto.estoque > 0) {
+                produto.quantidade = 1
+                const{data} = await axios.post(`http://localhost:3000/carrinho/`, produto)
+                this.itens.push(data)
+                this.total += data.preco
+            }
             return Promise.resolve()
             
         },

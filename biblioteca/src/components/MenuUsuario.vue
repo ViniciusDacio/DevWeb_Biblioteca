@@ -8,10 +8,12 @@ export default {
   setup() {
     const cstore = carrinhoStore();
     var valor = cstore.getValor();
+    var qtdCarrinho = cstore.getQtdCarrinho();
 
     return {
       cstore,
-      valor
+      valor,
+      qtdCarrinho
     }
   },
 }
@@ -20,8 +22,11 @@ export default {
 <template>
   <nav id="menu-top">
     <router-link to="/screen_user"><span>Home</span></router-link>
-    <router-link to="/carrinho"><span>Carrinho {{ valor }}</span>
+    <router-link to="/carrinho"><span>Carrinho {{ qtdCarrinho }}</span>
     </router-link>
 
   </nav>
 </template>
+
+<style>
+</style>

@@ -12,7 +12,7 @@
                 Preço: R${{ j.preco }} <br>
                 <div v-if="opcoesCarrinho">
                     <button @click="addlivro(j)">Adicionar no Carrinho</button>
-                    <button @click="remlivro(j)">Remover do Carrinho</button>
+                    <button v-if="carrinho(j)" @click="remlivro(j)">Remover do Carrinho</button>
                 </div>
              <hr>
             </li>
@@ -77,6 +77,12 @@ export default {
     async mounted(){
         await this.lstore.getLivros()
         await this.cstore.getItens()
+    },
+
+    methods: {
+        carrinho(livro){
+            return this.cstore.noCarrinho(livro)
+        },
     },
 
         
