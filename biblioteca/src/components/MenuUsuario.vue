@@ -29,4 +29,18 @@ export default {
 </template>
 
 <style>
+
+#menu-top {
+  background-color: #171a21;
+  width: 96%;
+  height: 10%;
+  padding: 2.5%;
+  color: #c4c2c0;
+  text-align: center;
+}
+
+.carrinhoMenu {
+ margin-left: 1100px;
+
+}
 </style>

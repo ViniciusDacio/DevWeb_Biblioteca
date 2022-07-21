@@ -33,6 +33,7 @@
             </ul>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -107,5 +108,6 @@ export default {
     display: flex;
     float: top;
    
+
 }
 </style>

@@ -18,10 +18,29 @@ export default {
 
 <template>
   <router-view/>
+  <footer class="footer">
+			<h5> Biblioteca | IFC Araquari </h5>
+		</footer>
 </template>
 
 
-<style scoped>
+<style>
+.footer{
+	margin-top: 5%;
+	background-color: #171a21;
+	width: 96%;
+	padding: 2.5%;
+	color: #c4c2c0;
+	text-align: center;
+  margin-left: -8px;
+  margin-bottom: -10px;
+  
+  
+}
+
+.clearFix{
+	clear: both;
+}
 
 
 </style>
