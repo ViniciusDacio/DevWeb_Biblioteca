@@ -6,9 +6,8 @@ import style from '@/assets/style.css';
 
 <template>
   <nav id="menu-top">
-    <router-link to="/"><span>Homew</span></router-link>
+    <router-link to="/"><span>Home</span></router-link>
     <router-link to="/admin"><span>Administração</span></router-link>
-    <router-link to="/cad_user" class="cad_user"><span>Adicionar Usuário</span></router-link>
-    <input type="text" v-model="input" placeholder="Procurar livros..." />
+    <!-- <router-link to="/cad_user" class="cad_user"><span>Adicionar Usuário</span></router-link> -->
   </nav>
 </template>

@@ -6,12 +6,10 @@
                     <div class="form-group has-feedback">
                         <span class="glyphicon">Usuario:</span>
                         <input type="user" v-model="user" placeholder="Usuario" class="field">
-                        
                     </div>
                     <div class="">
                         <span class="glyphicon">Senha:</span>
                         <input class="field" type="password" v-model="pass" v-on:keyup.enter="login()" placeholder="Senha">
-                        
                     </div>
                 </form><br>
                 <div class="buttons">

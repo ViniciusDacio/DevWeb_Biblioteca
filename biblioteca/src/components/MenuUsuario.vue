@@ -22,7 +22,7 @@ export default {
 <template>
   <nav id="menu-top">
     <router-link to="/screen_user"><span>Home</span></router-link>
-    <router-link to="/carrinho"><span>Carrinho {{ qtdCarrinho }}</span>
+    <router-link to="/carrinho"><span>Carrinho</span>
     </router-link>
 
   </nav>

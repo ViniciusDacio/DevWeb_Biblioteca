@@ -22,6 +22,12 @@ export const livroStore = defineStore('lstore', {
             const index = this.livros.findIndex(livro => livro.id === id);
             this.livros.splice(index, 1);
             return Promise.resolve()
+        },
+        async updateLivro(livro) {
+            await axios.put(`http://localhost:3000/livros/${livro.id}`, livro);
+            const index = this.livros.findIndex(edit => edit.id === livro.id);
+            this.livros.splice(index, 1, livro);
+            return Promise.resolve()
         }
     },
     

@@ -5,46 +5,53 @@
         <router-link to="/screen_user">Voltar</router-link>
     </button>
     <hr>
-    <span> Total: {{ valor }}</span>
-    <ul>
+    <span>Total: {{ valor.toFixed(2) }}</span> <br>
+    <span>Itens: {{ qtdItens }}</span>
+        <ul>
             <li v-for="i in cstore.itens" :key="i.titulo">
                 Livro: {{ i.livro }} <br>
                 Autor: {{ i.autor }} <br>
                 Preço Unitário: R$ {{ i.preco }} <br>
                 Valor Total: R$ {{ i.total }} <br>
                 Quantidade: {{ i.quantidade }} <br>
-                <button @click="comprar()">Comprar</button>
             </li>
         </ul>
-    
-    <button @click="remtudo()">Remover Tudo</button>
-   
+        <div class="compra">
+            <button @click="comprar()">Comprar</button> <br> <br>
+            <button @click="remtudo()">Remover Tudo</button>
+        </div>
 </template>
 
 <script>
 import { carrinhoStore } from '../store/carrinho.js'
-import {ref} from '@vue/reactivity'
 
 export default {
-    setup() {
-        const cstore = carrinhoStore();
-        var valor = cstore.getValor();
-        var livro = ref('')
-
-    function remtudo(){
-        cstore.removeTudo();
-    }
-    function comprar(){
-        return cstore.comprar();
-    }
-
+    data() {
         return {
-            cstore,
-            valor,
-            remtudo,
-            comprar,
+            valor: this.cstore.getValor(),
+            qtdItens: this.cstore.getQtdCarrinho(),
         }
     },
+    methods: {
+        comprar() {
+            this.cstore.comprar()
+            this.$router.push('/screen_user')
+        },
+        remtudo() {
+            this.cstore.removeTudo()
+            alert('Tudo removido do carrinho')
+            history.back()
+        },
+    },
+    setup() {
+        const cstore = carrinhoStore();
+        return {
+            cstore,
+        }
+    },
+    async mounted(){
+        await this.cstore.getItens()
+  },
     
 }
 </script>

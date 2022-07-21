@@ -12,7 +12,7 @@
 
 <script>
 
-import Livro from '../components/LivrosComp.vue'
+import Livro from '../components/ExibirLivro.vue'
 import navbar from '../components/NavBar.vue'
 
 export default{

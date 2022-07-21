@@ -4,9 +4,7 @@ import axios from 'axios'
 export const carrinhoStore = defineStore('carrinho', {
     state: () => ({
         total: 0,
-
         qtdCarrinho: 0,
-
         itens: [],
         
     }),
@@ -14,12 +12,9 @@ export const carrinhoStore = defineStore('carrinho', {
         getValor() {
             return this.total
         },
-
         getQtdCarrinho() {
             return this.qtdCarrinho
-
         },
-        
         noCarrinho(produto) {
             const produtoExiste = this.itens.find(item => item.id === produto.id)
             if(produtoExiste) {
@@ -36,14 +31,16 @@ export const carrinhoStore = defineStore('carrinho', {
             
             if(produtoExiste && produtoExiste.quantidade < produto.estoque) {
                     produtoExiste.quantidade++
-                    const{data} = await axios.put(`http://localhost:3000/carrinho/${produto.id}`, produtoExiste)
+                    await axios.put(`http://localhost:3000/carrinho/${produto.id}`, produtoExiste)
                     this.qtdCarrinho++
+                    this.total += produto.preco
                 return Promise.resolve()
             }
             else if(produto.estoque > 0) {
                 produto.quantidade = 1
                 const{data} = await axios.post(`http://localhost:3000/carrinho/`, produto)
                 this.itens.push(data)
+                this.qtdCarrinho++
                 this.total += data.preco
             }
             return Promise.resolve()
@@ -51,6 +48,10 @@ export const carrinhoStore = defineStore('carrinho', {
         },
         async comprar() {
             this.getItens()
+            if(this.itens.length === 0) {
+                alert('Carrinho vazio')
+                return
+            }
 
             this.itens.map(async item => {
                 const {data} = await axios.get(`http://localhost:3000/livros/${item.id}`)
@@ -60,9 +61,10 @@ export const carrinhoStore = defineStore('carrinho', {
                 }
                 data.quantidade -= item.quantidade
                 await axios.put(`http://localhost:3000/livros/${item.id}`, data)
-                //this.removeTudo()
+                this.removeTudo()
                 }
             )
+            alert('Compra realizada com sucesso')
             return Promise.resolve()
         
         },
@@ -71,19 +73,22 @@ export const carrinhoStore = defineStore('carrinho', {
 
             if(produtoExiste.quantidade > 1) {
                 produtoExiste.quantidade--
-                const{dados} = await axios.put(`http://localhost:3000/carrinho/${produto.id}`, produtoExiste)
+                await axios.put(`http://localhost:3000/carrinho/${produto.id}`, produtoExiste)
             } else {
-                const{data} = await axios.delete(`http://localhost:3000/carrinho/${produto.id}`)
+                await axios.delete(`http://localhost:3000/carrinho/${produto.id}`)
                 this.itens.splice(produto.id, 1)
             }
             this.total -= produto.preco
+            this.qtdCarrinho--
             return Promise.resolve()
 
         },
         async removeTudo() {
            this.itens.map(async item => {
-                const{data} = await axios.delete(`http://localhost:3000/carrinho/${item.id}`)
+                await axios.delete(`http://localhost:3000/carrinho/${item.id}`)
                 this.itens.splice(item.id, 1)
+                this.total = 0
+                this.qtdCarrinho = 0
             }
             )
         },

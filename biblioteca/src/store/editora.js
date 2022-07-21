@@ -22,6 +22,12 @@ export const editoraStore = defineStore('store', {
             const index = this.editoras.findIndex(editora => editora.id === id);
             this.editoras.splice(index, 1);
             return Promise.resolve()
+        },
+        async updateEditora(editora) {
+            await axios.put(`http://localhost:3000/editoras/${editora.id}`, editora);
+            const index = this.editoras.findIndex(edit => edit.id === editora.id);
+            this.editoras.splice(index, 1, editora);
+            return Promise.resolve()
         }
     },
     

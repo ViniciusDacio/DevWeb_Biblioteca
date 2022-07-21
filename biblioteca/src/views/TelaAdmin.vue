@@ -16,17 +16,16 @@
             <router-link to="/category" class="router"><span>Cadastro Categoria</span></router-link>
         </button>
     </div>
-    <Livro class="livro"/>
+    
     </div>
 </div>
 </template>
 
 <script>
 import Navbar from "../components/NavBar.vue"
-import Livro from '../components/LivrosComp.vue'
 
 export default{
-    components: {Navbar, Livro},
+    components: {Navbar},
 }
 </script>
 
@@ -42,6 +41,7 @@ export default{
 .livro{
     display: flex;
     padding-left: 100px;
+    min-height: 400px;
 }
 
 
